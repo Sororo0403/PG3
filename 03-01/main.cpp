@@ -1,11 +1,11 @@
 #include "Enemy.h"
 
 int main() {
-    Enemy enemy;
+  Enemy enemy;
 
-    for (int i = 0; i < 6; i++) {
-        enemy.Update();
-    }
+  for (int i = 0; i < 6; i++) {
+    enemy.Update();
+  }
 
-    return 0;
+  return 0;
 }

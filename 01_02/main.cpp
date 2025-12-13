@@ -17,14 +17,15 @@
 /// <param name="mail">学籍メールアドレス文字列。</param>
 /// <returns>抽出した学籍番号の整数。見つからない場合は INT_MAX。</returns>
 int ExtractStudentNumber(const std::string &mail) {
-	static const std::regex re(R"(k024g(\d+)\@g\.neec\.ac\.jp)", std::regex::icase);
+  static const std::regex re(R"(k024g(\d+)\@g\.neec\.ac\.jp)",
+                             std::regex::icase);
 
-	std::smatch m;
-	if (std::regex_search(mail, m, re) && m.size() >= 2) {
-		return std::stoi(m[1].str());
-	}
+  std::smatch m;
+  if (std::regex_search(mail, m, re) && m.size() >= 2) {
+    return std::stoi(m[1].str());
+  }
 
-	return INT_MAX;
+  return INT_MAX;
 }
 
 /// <summary>
@@ -32,26 +33,28 @@ int ExtractStudentNumber(const std::string &mail) {
 /// </summary>
 /// <param name="line">カンマ区切りの文字列。</param>
 /// <param name="out">分割・整形後のメールを追加していく出力先ベクター。</param>
-void AppendEmailsFromCsvLine(const std::string &line, std::vector<std::string> &out) {
-	std::size_t start = 0;
+void AppendEmailsFromCsvLine(const std::string &line,
+                             std::vector<std::string> &out) {
+  std::size_t start = 0;
 
-	while (start < line.size()) {
-		std::size_t comma = line.find(',', start);
-		std::string token = (comma == std::string::npos) ? line.substr(start)
-			: line.substr(start, comma - start);
-		// 前後の空白を軽く落とす
-		std::size_t l = 0, r = token.size();
-		while (l < r && std::isspace(static_cast<unsigned char>(token[l])))
-			++l;
-		while (r > l && std::isspace(static_cast<unsigned char>(token[r - 1])))
-			--r;
-		token = token.substr(l, r - l);
-		if (!token.empty())
-			out.push_back(token);
-		if (comma == std::string::npos)
-			break;
-		start = comma + 1;
-	}
+  while (start < line.size()) {
+    std::size_t comma = line.find(',', start);
+    std::string token = (comma == std::string::npos)
+                            ? line.substr(start)
+                            : line.substr(start, comma - start);
+    // 前後の空白を軽く落とす
+    std::size_t l = 0, r = token.size();
+    while (l < r && std::isspace(static_cast<unsigned char>(token[l])))
+      ++l;
+    while (r > l && std::isspace(static_cast<unsigned char>(token[r - 1])))
+      --r;
+    token = token.substr(l, r - l);
+    if (!token.empty())
+      out.push_back(token);
+    if (comma == std::string::npos)
+      break;
+    start = comma + 1;
+  }
 }
 
 /// <summary>
@@ -60,17 +63,18 @@ void AppendEmailsFromCsvLine(const std::string &line, std::vector<std::string> &
 /// <param name="path">読み込むテキストファイルのパス。</param>
 /// <param name="out">読み込んだメールアドレスを追加していく出力先ベクター。</param>
 /// <returns>読み込みに成功した場合は true、失敗した場合は false。</returns>
-bool LoadEmailsFromFile(const std::string &path, std::vector<std::string> &out) {
-	std::ifstream ifs(path);
-	if (!ifs)
-		return false;
+bool LoadEmailsFromFile(const std::string &path,
+                        std::vector<std::string> &out) {
+  std::ifstream ifs(path);
+  if (!ifs)
+    return false;
 
-	std::string line;
-	while (std::getline(ifs, line)) {
-		AppendEmailsFromCsvLine(line, out);
-	}
+  std::string line;
+  while (std::getline(ifs, line)) {
+    AppendEmailsFromCsvLine(line, out);
+  }
 
-	return true;
+  return true;
 }
 
 /// <summary>
@@ -79,48 +83,48 @@ bool LoadEmailsFromFile(const std::string &path, std::vector<std::string> &out) 
 /// <param name="emails">表示対象のメールアドレス一覧。</param>
 /// <param name="title">見出しとして表示するタイトル文字列。</param>
 void PrintEmails(const std::vector<std::string> &emails, const char *title) {
-	std::cout << "=== " << title << " (" << emails.size() << ") ===\n";
+  std::cout << "=== " << title << " (" << emails.size() << ") ===\n";
 
-	for (const auto &e : emails)
-		std::cout << e << '\n';
-	std::cout << std::endl;
+  for (const auto &e : emails)
+    std::cout << e << '\n';
+  std::cout << std::endl;
 }
 
 int main(int argc, char **argv) {
 #ifdef _WIN32
-	// WindowsのコンソールをUTF-8に
-	SetConsoleOutputCP(65001);
+  // WindowsのコンソールをUTF-8に
+  SetConsoleOutputCP(65001);
 #endif
 
-	// コマンドライン引数 or 既定ファイル名
-	std::string filepath = (argc >= 2) ? argv[1] : "PG3_2025_01_02.txt";
+  // コマンドライン引数 or 既定ファイル名
+  std::string filepath = (argc >= 2) ? argv[1] : "PG3_2025_01_02.txt";
 
-	// メールを vector<string> で保持
-	std::vector<std::string> emails;
+  // メールを vector<string> で保持
+  std::vector<std::string> emails;
 
-	// ファイルから読み込み（失敗時は手動初期化のフォールバック）
-	if (!LoadEmailsFromFile(filepath, emails)) {
-		emails = {
-			"k024g1017@g.neec.ac.jp", "k024g0033@g.neec.ac.jp",
-			"k024g0057@g.neec.ac.jp", "k024g0020@g.neec.ac.jp",
-			"k024g0109@g.neec.ac.jp", "k024g1031@g.neec.ac.jp",
-			"k024g0004@g.neec.ac.jp", "k024g0027@g.neec.ac.jp",
-			"k024g0058@g.neec.ac.jp", "k024g0007@g.neec.ac.jp",
-		};
-	}
+  // ファイルから読み込み（失敗時は手動初期化のフォールバック）
+  if (!LoadEmailsFromFile(filepath, emails)) {
+    emails = {
+        "k024g1017@g.neec.ac.jp", "k024g0033@g.neec.ac.jp",
+        "k024g0057@g.neec.ac.jp", "k024g0020@g.neec.ac.jp",
+        "k024g0109@g.neec.ac.jp", "k024g1031@g.neec.ac.jp",
+        "k024g0004@g.neec.ac.jp", "k024g0027@g.neec.ac.jp",
+        "k024g0058@g.neec.ac.jp", "k024g0007@g.neec.ac.jp",
+    };
+  }
 
-	// 学籍番号でソート（同番号は文字列の辞書順で決定、安定ソート）
-	std::stable_sort(emails.begin(), emails.end(),
-		[](const std::string &a, const std::string &b) {
-			int na = ExtractStudentNumber(a);
-			int nb = ExtractStudentNumber(b);
-			if (na != nb)
-				return na < nb;
-			return a < b;
-		});
+  // 学籍番号でソート（同番号は文字列の辞書順で決定、安定ソート）
+  std::stable_sort(emails.begin(), emails.end(),
+                   [](const std::string &a, const std::string &b) {
+                     int na = ExtractStudentNumber(a);
+                     int nb = ExtractStudentNumber(b);
+                     if (na != nb)
+                       return na < nb;
+                     return a < b;
+                   });
 
-	// 出力
-	PrintEmails(emails, "Sorted by student number");
+  // 出力
+  PrintEmails(emails, "Sorted by student number");
 
-	return 0;
+  return 0;
 }
