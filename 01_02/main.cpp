@@ -102,7 +102,7 @@ int main(int argc, char **argv) {
   // メールを vector<string> で保持
   std::vector<std::string> emails;
 
-  // ファイルから読み込み（失敗時は手動初期化のフォールバック）
+  // ファイルから読み込み(失敗時は手動初期化のフォールバック)
   if (!LoadEmailsFromFile(filepath, emails)) {
     emails = {
         "k024g1017@g.neec.ac.jp", "k024g0033@g.neec.ac.jp",
@@ -113,7 +113,7 @@ int main(int argc, char **argv) {
     };
   }
 
-  // 学籍番号でソート（同番号は文字列の辞書順で決定、安定ソート）
+  // 学籍番号でソート(同番号は文字列の辞書順で決定、安定ソート)
   std::stable_sort(emails.begin(), emails.end(),
                    [](const std::string &a, const std::string &b) {
                      int na = ExtractStudentNumber(a);

@@ -5,7 +5,7 @@
 #include <functional>
 
 /// <summary>
-/// 指定時間待機した後に、コールバック（std::function）を実行する。
+/// 指定時間待機した後に、コールバック(std::function)を実行する。
 /// </summary>
 /// <param name="fn">遅延後に実行する関数</param>
 /// <param name="delayMs">待機時間(ミリ秒)</param>

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-// 一般的な賃金体系（時給1226円）
+// 一般的な賃金体系(時給1226円)
 int NormalSalary(int hours) { return hours * 1226; }
 
 // 再帰的な賃金体系：
