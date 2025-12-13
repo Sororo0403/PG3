@@ -14,7 +14,13 @@ jobs:
 
       - name: Check fullwidth parentheses
         run: |
-          if grep -RIn '[（）]' .; then
+          if grep -RIn '[（）]' . \
+            --exclude-dir=.git \
+            --exclude-dir=.github \
+            --exclude=*.yml \
+            --exclude=*.yaml \
+            --exclude=*.md \
+            --exclude=.clang-format; then
             echo "❌ Full-width parentheses detected. Please use ()"
             exit 1
           else
