@@ -1,0 +1,22 @@
+name: 全角かっこ確認
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check-fullwidth-parentheses:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check fullwidth parentheses
+        run: |
+          if grep -RIn '[（）]' .; then
+            echo "❌ Full-width parentheses detected. Please use ()"
+            exit 1
+          else
+            echo "✅ No full-width parentheses found"
+          fi
