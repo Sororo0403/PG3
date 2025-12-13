@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36429.23
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11304.174 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "00_01", "00_01\00_01.vcxproj", "{4F0441E0-65FC-4EFD-94FA-D84674B55319}"
 EndProject
@@ -20,6 +20,11 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03_01", "03-01\03_01.vcxproj", "{A5C4BC02-0823-4F33-B4C9-ADBAB40A0B7E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03_02", "03-02\03_02.vcxproj", "{EE5AF01C-BB00-4E69-BE48-08BCEA6EC1F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目", "ソリューション項目", "{18AD0BFA-C964-4766-85EC-9ECCB1A11106}"
+	ProjectSection(SolutionItems) = preProject
+		.clang-format = .clang-format
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
