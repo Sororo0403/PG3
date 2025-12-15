@@ -22,15 +22,11 @@ KeepEmptyLinesAtTheStartOfBlocks: true
 # ======================================
 # Includes
 # ======================================
-
-# include の順序は手動管理
 SortIncludes: false
 
 # ======================================
 # Spacing
 # ======================================
-
-# カンマの後ろに必ずスペース
 SpaceAfterCStyleCast: true
 SpacesInAngles: false
 SpacesInContainerLiterals: true
