@@ -13,10 +13,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{04359756-FBE8-4A5C-B463-34E8474B4721}</ProjectGuid>
+    <ProjectGuid>{29156AF7-4411-433C-A212-0A921F733F71}</ProjectGuid>
     <RootNamespace>My0001</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>03_04</ProjectName>
+    <ProjectName>05_01</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -86,9 +86,10 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Circle.h" />
-    <ClInclude Include="IShape.h" />
-    <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="AlarmNotifier.h" />
+    <ClInclude Include="MailNotifier.h" />
+    <ClInclude Include="Notifier.h" />
+    <ClInclude Include="PhoneNotifier.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

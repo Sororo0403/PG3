@@ -1,21 +1,18 @@
-#include "Player.h"
-#include "InputHandler.h"
-#include <thread>
-#include <chrono>
+#include "Circle.h"
+#include "Rectangle.h"
 
 int main() {
-    Player player;
-    InputHandler input;
+    IShape *shapes[2];
 
-    while (true) {
-        ICommand *command = input.HandleInput();
+    shapes[0] = new Circle(5.0f);
+    shapes[1] = new Rectangle(4.0f, 6.0f);
 
-        if (command) {
-            command->Exec(player);
-            player.Draw();
-        }
+    for (int i = 0; i < 2; i++) {
+        shapes[i]->Draw();
+    }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(16));
+    for (int i = 0; i < 2; i++) {
+        delete shapes[i];
     }
 
     return 0;
