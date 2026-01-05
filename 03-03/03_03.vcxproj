@@ -84,6 +84,12 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AlarmNotifier.h" />
+    <ClInclude Include="MailNotifier.h" />
+    <ClInclude Include="Notifier.h" />
+    <ClInclude Include="PhoneNotifier.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
