@@ -1,6 +1,6 @@
 #include <cstdio>
 
-// 一般的な賃金体系（時給1226円）
+// 一般的な賃金体系
 int NormalSalary(int hours) {
     return hours * 1226;
 }
@@ -11,7 +11,7 @@ int main() {
     // 通常の賃金合計
     int normalTotal = NormalSalary(hours);
 
-    // 再帰的な賃金体系（逐次計算）
+    // 再帰的な賃金体系
     int recursiveTotal = 0;
     int wage = 100; // 1時間目の時給
 
