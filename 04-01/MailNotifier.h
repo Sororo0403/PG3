@@ -6,5 +6,7 @@ class MailNotifier : public Notifier {
     /// <summary>
     /// メールで通知する
     /// </summary>
-    void Notify() override;
+    void Notify() override {
+        std::cout << "メールが届きました" << std::endl;
+    }
 };

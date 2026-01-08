@@ -6,5 +6,7 @@ class PhoneNotifier : public Notifier {
     /// <summary>
     /// スマホで通知する
     /// </summary>
-    void Notify() override;
+    void Notify() override {
+        std::cout << "スマホに通知が届きました" << std::endl;
+    }
 };

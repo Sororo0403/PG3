@@ -6,22 +6,18 @@ class Rectangle : public IShape {
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    Rectangle(float width, float height) : width_(width), height_(height) {
-    }
+    Rectangle(float width, float height);
 
     /// <summary>
     /// 長方形の面積を求める
     /// </summary>
-    float Size() override {
-        return width_ * height_;
-    }
+    /// <returns>長方形の面積</returns>
+    float Size() override;
 
     /// <summary>
     /// 長方形の面積を表示
     /// </summary>
-    void Draw() override {
-        std::cout << "長方形の面積: " << Size() << std::endl;
-    }
+    void Draw() override;
 
   private:
     float width_;

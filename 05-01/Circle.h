@@ -6,22 +6,18 @@ class Circle : public IShape {
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    Circle(float radius) : radius_(radius) {
-    }
+    Circle(float radius);
 
     /// <summary>
     /// 円の面積を求める
     /// </summary>
-    float Size() override {
-        return 3.14f * radius_ * radius_;
-    }
+    /// <returns>円の面積</returns>
+    float Size() override;
 
     /// <summary>
     /// 円の面積を表示
     /// </summary>
-    void Draw() override {
-        std::cout << "円の面積: " << Size() << std::endl;
-    }
+    void Draw() override;
 
   private:
     float radius_;

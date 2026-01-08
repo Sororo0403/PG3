@@ -6,12 +6,12 @@ class IShape {
     /// <summary>
     /// デストラクタ
     /// </summary>
-    virtual ~IShape() {
-    }
+    virtual ~IShape() = default;
 
     /// <summary>
     /// 面積を求める
     /// </summary>
+    /// <returns>面積</returns>
     virtual float Size() = 0;
 
     /// <summary>

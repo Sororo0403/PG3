@@ -6,5 +6,7 @@ class AlarmNotifier : public Notifier {
     /// <summary>
     /// アラームで通知する
     /// </summary>
-    void Notify() override;
+    void Notify() override {
+        std::cout << "アラームが鳴りました" << std::endl;
+    }
 };
